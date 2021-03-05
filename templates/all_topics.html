@@ -1,0 +1,63 @@
+{% extends "base1.html" %}
+
+
+{% block title %} View All Topics {% endblock title %}
+
+{% block content %}
+
+
+<body>
+
+  <!-- Masthead -->
+  <header class="masthead text-white text-center">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+          <h1 class="mb-5">All Topics Page</h1>
+        </div>
+        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+
+          <table style="color: white">
+            <tr>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Created</th>
+              <th>Comments</th>
+              <th>View?</th>
+              <th>Edit?</th>
+              <th>Comment?</th>
+            </tr>
+
+            {% for topic in topics %}
+             <tr>
+                <td>{{ topic.title }}</td>
+                <td>{{ topic.creator.name }}</td>
+                <td>{{ topic.created }}</td>
+                <td> {% if topic.comm.id %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %} </td>
+
+                 <td>
+                   <button><a href="/topic_view/{{ topic.id }}">View Content</a></button>
+                </td>
+                <td>
+                   <button><a href="/topic_edit/{{ topic.id }}">Update</a></button>
+                </td>
+                 <td>
+                   <button><a href="/comment_create/{{ topic.id }}">Create Comment</a></button>
+                </td>
+             </tr>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+    </div>
+  </header>
+</body>
+
+</html>
+
+{% endblock content %}

@@ -1,0 +1,45 @@
+{% extends "base1.html" %}
+
+
+{% block title %} View a Topic {% endblock title %}
+
+{% block content %}
+
+
+<body>
+
+  <!-- Masthead -->
+  <header class="masthead text-white text-center">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+          <h1 class="mb-5">View a Topic</h1>
+        </div>
+        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+         <p> By:  {{ topic.creator.name}}  |  Created:  {{ topic.created }} </p>
+         <form action="/topic_view/{{topic.id}}" method="post">
+            <div class="form-row">
+              <div class="col-12 col-md-9 mb-2 mb-md-0">
+
+                  <label><b>Title</b></label><p class="form-control form-control-lg" style="text-align: left"> {{ topic.title }} </p>
+                  <label><b>Topic</b></label><p class="form-control form-control-lg" style="text-align: left"> {{ topic.text }} </p>
+                    <br>
+                    {% for comment in comments %}
+                       <label><b>Comment By: {{ comment.author.name }}</b></label>
+                       <p class="form-control form-control-lg" style="text-align: left"> {{ comment.text }} </p>
+                    {% endfor %}
+
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+</body>
+
+</html>
+
+{% endblock content %}
