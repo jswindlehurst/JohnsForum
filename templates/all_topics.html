@@ -29,25 +29,25 @@
               <th>Comment?</th>
             </tr>
 
-            {% for topic in topics %}
+            {% for comment in comments %}
              <tr>
-                <td>{{ topic.title }}</td>
-                <td>{{ topic.creator.name }}</td>
-                <td>{{ topic.created }}</td>
-                <td> {% if topic.comm.id %}
+                <td>{{ comment.topic.title }}</td>
+                <td>{{ comment.author.name }}</td>
+                <td>{{ comment.topic.created }}</td>
+                <td> {% if comment.id %}
                         Yes
                     {% else %}
                         No
                     {% endif %} </td>
 
                  <td>
-                   <button><a href="/topic_view/{{ topic.id }}">View Content</a></button>
+                   <button><a href="/topic_view/{{ comment.topic.id }}">View Content</a></button>
                 </td>
                 <td>
-                   <button><a href="/topic_edit/{{ topic.id }}">Update</a></button>
+                   <button><a href="/topic_edit/{{ comment.topic.id }}">Update</a></button>
                 </td>
                  <td>
-                   <button><a href="/comment_create/{{ topic.id }}">Create Comment</a></button>
+                   <button><a href="/comment_create/{{ comment.topic.id }}">Create Comment</a></button>
                 </td>
              </tr>
             {% endfor %}

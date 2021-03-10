@@ -10,3 +10,13 @@ class Comment(db.Model):
     author = db.relationship("User", foreign_keys=author_id)
     topic_id = db.Column(db.Integer, db.ForeignKey('topics.id'))
     topic = db.relationship("Topic", foreign_keys=topic_id)
+
+
+    @classmethod
+    def create(cls, text, created, author, topic):
+        comment = cls(text=text, created=created, author=author, topic=topic)
+
+        db.add(comment)
+        db.commit()
+
+        return comment
