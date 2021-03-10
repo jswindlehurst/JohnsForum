@@ -111,9 +111,9 @@ def logout():
 @app.route("/all_topics", methods=["GET"])
 def all_topics():
 
-    all_topics = db.query(Comment.topic).all()
+    all_topics = db.query(Topic).all()
 
-    return render_template("all_topics.html", comments=all_topics)
+    return render_template("all_topics.html", topics=all_topics)
 
 
 # Topic View handler
